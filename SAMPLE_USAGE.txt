@@ -1,0 +1,45 @@
+SAMPLE USAGE
+
+# Bellman Ford test 1
+# in this test, have direction, search every node to node f, use routing_table_01.txt as input.
+.\routing.exe --with_direction --destination_node=f --data_path=./routing_table_01.txt bellmanford
+
+
+
+# BellmanFord test 2
+# If remove edge between c and f (see routing_table_02.txt for detail)
+# First test with direction, to the node f, the result should be one negative loop:
+.\routing.exe --with_direction --destination_node=f --data_path=./routing_table_02.txt bellmanford
+
+
+
+# Bellman Ford test 3
+# If remove edge between c and f (see routing_table_02.txt for detail)
+# Compare with test 2, if we set it as no direction, node c still can go to node f, thus there should be no negative loop:
+.\routing.exe --destination_node=f --data_path=./routing_table_02.txt bellmanford
+
+
+
+# Dijkstra test 1
+# If all nodes available and un-directed, from node a to all other nodes:
+.\routing.exe --start_node=a --data_path=./routing_table_01.txt Dijkstra
+
+
+
+# Dijkstra test 2
+# In this test all edges have direction. Compare with test 1: the node e have longer path cause direction.
+.\routing.exe --with_direction --start_node=a --data_path=./routing_table_01.txt dijkstra
+
+
+
+# Astar test 1
+# Standard Astar from 1 to 6
+# In this case all the node have weight 1, so the shortest path is same as dijkstra
+.\routing.exe --with_direction --with_weight --start_node=1 --destination_node=6 --data_path=./routing_table_03.txt astar
+
+
+
+# Astar test 2
+# If decrease weight of node 5 and increase weight of node 6 (see routing_table_04.txt for detail)
+# Compare with Astar test 1, it should change the path cause now if go to 6 via 3 will cost more.
+.\routing.exe --with_direction --with_weight --start_node=1 --destination_node=6 --data_path=./routing_table_04.txt astar

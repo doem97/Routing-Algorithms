@@ -1,0 +1,12 @@
+# format: from, next, distance
+# use '#' to comment any line
+# This dataset is a directed graph with node name as letter
+a,c,2
+a,b,3
+a,d,5
+b,d,1
+b,e,4
+d,e,3
+d,c,2
+#c,f,1
+e,f,2
